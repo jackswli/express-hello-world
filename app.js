@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
 });
 
 // app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-server.listen(3000, () => {console.log('listening on *:3000');});
+server.listen(() => {console.log('server started listening');});
 
 
 const html = `
