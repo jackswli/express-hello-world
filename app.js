@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
+const { Server } = require("socket.io");
+const io = new Server(app);
 
 // app.get("/", (req, res) => res.type('html').send(html));
 app.get('/', (req, res) => { res.sendFile(__dirname + '/index.html'); });
