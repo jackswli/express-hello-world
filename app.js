@@ -10,7 +10,7 @@ user_count = 0;
 
 app.get('/', (req, res) => { res.sendFile(__dirname + '/index.html'); });
 app.get('/heartbeat', (req, res) => {
-    io.emit('chat message', 'Welcome ' + user_count + (user_count > 2 ? "th" : (user_count > 1 ? "nd" : (user_count > 0 ? "st" : "th"))) + " user.");
+    io.emit('chat message', 'Welcome, total ' + user_count + " user(s).");
     res.send("OK");
 });
 
