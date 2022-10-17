@@ -9,10 +9,10 @@ const io = new Server(server);
 user_count = 0;
 
 app.get('/', (req, res) => { res.sendFile(__dirname + '/index.html'); });
-app.post('/heartbeat', (req, res) => {
-    io.emit('chat message', 'Welcome ' + user_count + (user_count > 2 ? "th" : (user_count > 1 ? "nd" : (user_count > 0 ? "st" : "th"))) + " user.");
-    res.send("OK");
-});
+// app.post('/heartbeat', (req, res) => {
+//     io.emit('chat message', 'Welcome ' + user_count + (user_count > 2 ? "th" : (user_count > 1 ? "nd" : (user_count > 0 ? "st" : "th"))) + " user.");
+//     res.send("OK");
+// });
 
 io.on('connection', (socket) => {
     console.log('a user connected');
@@ -24,7 +24,7 @@ io.on('connection', (socket) => {
     });
     socket.on('chat message', (msg) => {
         console.log('message: ' + msg);
-        io.emit('chat message', msg);
+        io.emit('chat message', user_count + ":" + msg);
     });
 });
 
