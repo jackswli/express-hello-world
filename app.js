@@ -17,7 +17,9 @@ app.get('/heartbeat', (req, res) => {
 io.on('connection', (socket) => {
     console.log('a user connected');
     user_count = user_count + 1;
-    socket.broadcast.emit('hi');
+    welcome_msg = 'A new user connected.'
+    socket.broadcast.emit('chat message', welcome_msg);
+    socket.emit('chat message', welcome_msg);
     socket.on('disconnect', () => {
         console.log('user disconnected');
         user_count = user_count - 1;
