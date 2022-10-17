@@ -9,7 +9,7 @@ const io = new Server(server);
 user_count = 0;
 
 app.get('/', (req, res) => { res.sendFile(__dirname + '/index.html'); });
-app.get('/heartbeat', (req, res) => {
+app.post('/heartbeat', (req, res) => {
     io.emit('chat message', 'Welcome ' + user_count + (user_count > 2 ? "th" : (user_count > 1 ? "nd" : (user_count > 0 ? "st" : "th"))) + " user.");
     res.send("OK");
 });
